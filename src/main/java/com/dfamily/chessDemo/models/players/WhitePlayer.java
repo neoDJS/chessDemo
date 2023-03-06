@@ -6,6 +6,7 @@
 package com.dfamily.chessDemo.models.players;
 
 import com.dfamily.chessDemo.models.ChessBoard;
+import com.dfamily.chessDemo.models.Game;
 import com.dfamily.chessDemo.models.Piece;
 import com.dfamily.chessDemo.models.Player;
 import com.dfamily.chessDemo.models.pieces.Bishop;
@@ -26,11 +27,12 @@ public final class WhitePlayer extends Player {
     public WhitePlayer() {
     }
 
-    public WhitePlayer(String newP) {
+    public WhitePlayer(Game newG) {
         super.setPieces(new ArrayList<>());
         super.setPlayerID(1);
         super.setColor("White");
         buildPieces();
+        initPiecesBoardPosition();
     }
 
     @Override
@@ -52,9 +54,9 @@ public final class WhitePlayer extends Player {
     }
 
     @Override
-    public void initPiecesBoardPosition(ChessBoard b) {
+    public void initPiecesBoardPosition() {
         this.getPieces().forEach((p) -> {
-            b.getCases().stream()
+            this.getGame().getBoard().getCases().stream()
                     .filter(c -> c.getNameID().equalsIgnoreCase(p.getInitPosition()))
                     .findFirst()
                     .get().setP(p);

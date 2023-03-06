@@ -14,12 +14,13 @@ import java.util.List;
  */
 public class ChessBoard {
     private int boardID;
+    private Game game;
     private List<BoardCase> cases;
 
     public ChessBoard() {
     }
 
-    public ChessBoard(String newB) {
+    public ChessBoard(Game newG) {
         this.cases = new ArrayList<>();
         String[] h = {"a", "b", "c", "d", "e", "f", "g", "h"};
         for(String el:h){
@@ -35,6 +36,14 @@ public class ChessBoard {
 
     public void setBoardID(int boardID) {
         this.boardID = boardID;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     public List<BoardCase> getCases() {

@@ -5,8 +5,6 @@
  */
 package com.dfamily.chessDemo.models;
 
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,6 +16,7 @@ public abstract class Player {
     private int playerID;
     private String name = null;
     private String color = null;
+    private Game game = null;
     private List<Piece> pieces = null;
     
     public String plays(){
@@ -93,7 +92,7 @@ public abstract class Player {
     }
     
     protected abstract void buildPieces(); 
-    public abstract void initPiecesBoardPosition(ChessBoard b);
+    public abstract void initPiecesBoardPosition();
     
     protected boolean validPiecesCount(){
         return pieces != null && pieces.size() == 16;
@@ -121,6 +120,14 @@ public abstract class Player {
 
     public void setColor(String color) {
         this.color = color;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     public List<Piece> getPieces() {

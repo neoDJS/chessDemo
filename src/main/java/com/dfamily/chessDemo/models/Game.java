@@ -25,11 +25,9 @@ public class Game {
 
     public Game(String newG) {
         this.turnCount = 0;
-        this.board = new ChessBoard("");
-        this.player1 = new WhitePlayer("");
-        this.player1.initPiecesBoardPosition(board);
-        this.player2 = new BlackPlayer("");
-        this.player2.initPiecesBoardPosition(board);
+        this.board = new ChessBoard(this);
+        this.player1 = new WhitePlayer(this);
+        this.player2 = new BlackPlayer(this);
         this.mate = false;
     }
     

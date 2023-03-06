@@ -6,6 +6,7 @@
 package com.dfamily.chessDemo.models.players;
 
 import com.dfamily.chessDemo.models.ChessBoard;
+import com.dfamily.chessDemo.models.Game;
 import com.dfamily.chessDemo.models.Piece;
 import com.dfamily.chessDemo.models.Player;
 import com.dfamily.chessDemo.models.pieces.Bishop;
@@ -14,20 +15,24 @@ import com.dfamily.chessDemo.models.pieces.Knight;
 import com.dfamily.chessDemo.models.pieces.Pawn;
 import com.dfamily.chessDemo.models.pieces.Queen;
 import com.dfamily.chessDemo.models.pieces.Rook;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author johns
  */
-public class BlackPlayer extends Player {
+public final class BlackPlayer extends Player {
 
     public BlackPlayer() {
     }
 
-    public BlackPlayer(String newP) {
+    public BlackPlayer(Game newG) {
+        super.setPieces(new ArrayList<>());
         super.setPlayerID(2);
         super.setColor("Black");
+        buildPieces();
+        initPiecesBoardPosition();
     }
     
     @Override
@@ -49,9 +54,9 @@ public class BlackPlayer extends Player {
     }
 
     @Override
-    public void initPiecesBoardPosition(ChessBoard b) {
+    public void initPiecesBoardPosition() {
         this.getPieces().forEach((p) -> {
-            b.getCases().stream()
+            this.getGame().getBoard().getCases().stream()
                     .filter(c -> c.getNameID().equalsIgnoreCase(p.getInitPosition()))
                     .findFirst()
                     .get().setP(p);
