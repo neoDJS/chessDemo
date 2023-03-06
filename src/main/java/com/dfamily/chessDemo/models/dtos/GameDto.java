@@ -58,4 +58,12 @@ public class GameDto implements Serializable {
     public void setBoard(ChessBoardDto board) {
         this.board = board;
     }
+
+    public boolean isMate() {
+        return mate;
+    }
+
+    public void setMate(boolean mate) {
+        this.mate = mate;
+    }
 }

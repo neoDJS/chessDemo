@@ -8,7 +8,6 @@ package com.dfamily.chessDemo.models.dtos;
 import com.dfamily.chessDemo.models.*;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  *

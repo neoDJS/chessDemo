@@ -95,4 +95,12 @@ public class Game {
     public void setBoard(ChessBoard board) {
         this.board = board;
     }
+
+    public boolean isMate() {
+        return mate;
+    }
+
+    public void setMate(boolean mate) {
+        this.mate = mate;
+    }
 }

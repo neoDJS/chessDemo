@@ -5,7 +5,6 @@
  */
 package com.dfamily.chessDemo.models.dtos;
 
-import com.dfamily.chessDemo.models.*;
 import java.io.Serializable;
 
 /**

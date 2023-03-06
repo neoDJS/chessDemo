@@ -5,7 +5,6 @@
  */
 package com.dfamily.chessDemo.models.players;
 
-import com.dfamily.chessDemo.models.ChessBoard;
 import com.dfamily.chessDemo.models.Game;
 import com.dfamily.chessDemo.models.Piece;
 import com.dfamily.chessDemo.models.Player;
