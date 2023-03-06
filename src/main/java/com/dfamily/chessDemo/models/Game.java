@@ -27,7 +27,9 @@ public class Game {
         this.turnCount = 0;
         this.board = new ChessBoard("");
         this.player1 = new WhitePlayer("");
+        this.player1.initPiecesBoardPosition(board);
         this.player2 = new BlackPlayer("");
+        this.player2.initPiecesBoardPosition(board);
         this.mate = false;
     }
     
