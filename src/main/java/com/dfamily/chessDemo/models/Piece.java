@@ -25,7 +25,7 @@ public abstract class Piece<P> {
     public abstract List<BoardCase> validMove();
     
     public String getOnBoardName(){
-        return this.getPosition()!= null? this.pieceNameLetter + this.getPosition().getNameID() : this.pieceNameLetter;
+        return this.getPosition()!= null? this.pieceNameLetter +"-"+ this.getPosition().getNameID() : this.pieceNameLetter;
     }
 
     public int getPieceID() {

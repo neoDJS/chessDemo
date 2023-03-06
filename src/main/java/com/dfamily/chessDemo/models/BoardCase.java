@@ -26,8 +26,8 @@ public class BoardCase {
         return nameID;
     }
     
-    public String getPieceCaseName(){
-        return this.getP()!= null? this.getP().getPieceNameLetter() + this.nameID : this.nameID;
+    public String getAssociatedName(){
+        return this.getP()!= null? this.getP().getPieceNameLetter() +"-"+ this.nameID : this.nameID;
     }
 
     public void setNameID(String name) {

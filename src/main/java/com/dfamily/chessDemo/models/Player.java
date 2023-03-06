@@ -47,7 +47,7 @@ public abstract class Player {
         Scanner r = new Scanner(System.in);
         String scan = "";
         boolean isValid = false;
-        while(r.hasNextLine() && isValid) {
+        while(r.hasNextLine() && !isValid) {
             scan = r.nextLine();
             if(action == 1 && scan.length()>0 && isValidCaseName(scan.substring(scan.length()-1))) {
                 isValid = true; 
