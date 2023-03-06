@@ -18,6 +18,7 @@ public class Game {
     private Player player1;
     private Player player2;
     private ChessBoard board;
+    private boolean mate;
 
     public Game() {
     }
@@ -27,27 +28,27 @@ public class Game {
         this.board = new ChessBoard("");
         this.player1 = new WhitePlayer("");
         this.player2 = new BlackPlayer("");
+        this.mate = false;
     }
     
     public void run(){
         int turn;
-        boolean mate = player1.isCheckMate() || player2.isCheckMate();
+        String bc;
         while(!mate){
             turn = whoIsTurn();
             if(turn == 1) {
-                player1.plays();
-                mate = player2.isCheckMate();
+                bc = player1.plays();
+                mate = player2.isCheckMate(bc);
             } else {
-                player2.plays();
-                mate = player1.isCheckMate();
+                bc = player2.plays();
+                mate = player1.isCheckMate(bc);
             }
             
-            if(mate) {
-                System.out.print("Player${turn} win!");
-                return;
-            } else {
-                this.turnCount++;
-            }
+            this.turnCount++;
+        }
+        
+        if(mate) {
+            System.out.print("Player${turn} win!");
         }
     }
     

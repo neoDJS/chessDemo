@@ -18,16 +18,28 @@ public abstract class Player {
     private String color = null;
     private List<Piece> pieces = null;
     
-    public void plays(){
-        
+    public String plays(){
+        return "";
     }
     
-    public boolean isCheckMate(){
-        return false;
+    public boolean isCheckMate(String pc){
+        Piece k = this.pieces.stream()
+                .filter(p -> "King".equals(p.getClass().getName()))
+                .findFirst()
+                .get();
+        return k.getPosition().getB().getCases().stream()
+                .filter(c -> c.getNameID().equals(pc))
+                .findFirst()
+                .get()
+                .getP()
+                .validMove().contains(k.getPosition()) && 
+                k.validMove().isEmpty();
     }
     
     private boolean validateCasename(String caseName){
-        return false;
+        return (caseName.length() == 2) && 
+                ("abcdefgh".contains(""+caseName.toLowerCase().charAt(0))) && 
+                ("12345678".contains(""+caseName.charAt(1)));
     }
     
     protected abstract void buildPieces(); 
