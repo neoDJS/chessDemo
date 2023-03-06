@@ -5,8 +5,6 @@
  */
 package com.dfamily.chessDemo.models;
 
-import com.dfamily.chessDemo.models.BoardCase;
-import com.dfamily.chessDemo.models.Player;
 import com.dfamily.chessDemo.models.moves.Move;
 import java.util.ArrayList;
 import java.util.List;

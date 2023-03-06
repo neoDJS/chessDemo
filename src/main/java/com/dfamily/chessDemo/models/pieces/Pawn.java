@@ -5,9 +5,10 @@
  */
 package com.dfamily.chessDemo.models.pieces;
 
-import com.dfamily.chessDemo.models.pieces.moves.PawnDiagonalMoveImpl;
 import com.dfamily.chessDemo.models.Piece;
 import com.dfamily.chessDemo.models.Player;
+import com.dfamily.chessDemo.models.moves.MoveDiagonalA1H8FwdImpl;
+import com.dfamily.chessDemo.models.moves.MoveDiagonalA8H1FwdImpl;
 import com.dfamily.chessDemo.models.moves.MoveForwardImpl;
 import java.util.ArrayList;
 
@@ -31,7 +32,8 @@ public final class Pawn extends Piece {
 
     @Override
     protected void buildMoves() {
-        this.getMovingWay().add(new PawnDiagonalMoveImpl());
+        this.getMovingWay().add(new MoveDiagonalA1H8FwdImpl());
+        this.getMovingWay().add(new MoveDiagonalA8H1FwdImpl());
         this.getMovingWay().add(new MoveForwardImpl());
     }
     

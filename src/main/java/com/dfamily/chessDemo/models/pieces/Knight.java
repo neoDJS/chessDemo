@@ -22,7 +22,7 @@ public final class Knight extends Piece {
     public Knight(Player owner, String initPosition) {
         super.setPieceNameLetter("C");
         super.setInitPosition(initPosition);
-        super.setMaxMove(8);
+        super.setMaxMove(1);
         super.setOwner(owner);
         super.setMovingWay(new ArrayList<>());
         buildMoves();
