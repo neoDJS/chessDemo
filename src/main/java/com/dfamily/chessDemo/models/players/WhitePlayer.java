@@ -53,12 +53,12 @@ public final class WhitePlayer extends Player {
 
     @Override
     public void initPiecesBoardPosition(ChessBoard b) {
-        for(Piece p: this.getPieces()){
+        this.getPieces().forEach((p) -> {
             b.getCases().stream()
                     .filter(c -> c.getNameID().equalsIgnoreCase(p.getInitPosition()))
                     .findFirst()
                     .get().setP(p);
-        }
+        });
     }
     
 }
