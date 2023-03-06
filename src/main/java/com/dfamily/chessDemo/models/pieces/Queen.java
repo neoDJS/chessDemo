@@ -34,11 +34,11 @@ public final class Queen extends Piece {
 
     @Override
     protected void buildMoves() {
-        this.getMovingWay().add(new MoveDiagonalA1H8FullImpl());
-        this.getMovingWay().add(new MoveDiagonalA8H1FullImpl());
-        this.getMovingWay().add(new MoveASideImpl());
-        this.getMovingWay().add(new MoveForwardImpl());
-        this.getMovingWay().add(new MoveBackwardImpl());
+        this.getMovingWay().add(MoveDiagonalA1H8FullImpl.getInstance());
+        this.getMovingWay().add(MoveDiagonalA8H1FullImpl.getInstance());
+        this.getMovingWay().add(MoveASideImpl.getInstance());
+        this.getMovingWay().add(MoveForwardImpl.getInstance());
+        this.getMovingWay().add(MoveBackwardImpl.getInstance());
     }
     
 }

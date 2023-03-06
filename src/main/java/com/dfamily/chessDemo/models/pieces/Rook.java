@@ -32,9 +32,9 @@ public final class Rook extends Piece {
 
     @Override
     protected void buildMoves() {
-        this.getMovingWay().add(new MoveASideImpl());
-        this.getMovingWay().add(new MoveForwardImpl());
-        this.getMovingWay().add(new MoveBackwardImpl());
+        this.getMovingWay().add(MoveASideImpl.getInstance());
+        this.getMovingWay().add(MoveForwardImpl.getInstance());
+        this.getMovingWay().add(MoveBackwardImpl.getInstance());
     }
     
     

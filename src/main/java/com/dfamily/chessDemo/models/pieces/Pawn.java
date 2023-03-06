@@ -32,9 +32,9 @@ public final class Pawn extends Piece {
 
     @Override
     protected void buildMoves() {
-        this.getMovingWay().add(new MoveDiagonalA1H8FwdImpl());
-        this.getMovingWay().add(new MoveDiagonalA8H1FwdImpl());
-        this.getMovingWay().add(new MoveForwardImpl());
+        this.getMovingWay().add(MoveDiagonalA1H8FwdImpl.getInstance());
+        this.getMovingWay().add(MoveDiagonalA8H1FwdImpl.getInstance());
+        this.getMovingWay().add(MoveForwardImpl.getInstance());
     }
     
 }

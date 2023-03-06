@@ -30,7 +30,7 @@ public final class Knight extends Piece {
 
     @Override
     protected void buildMoves() {
-        this.getMovingWay().add(new MoveSpecialLImpl());
+        this.getMovingWay().add(MoveSpecialLImpl.getInstance());
     }
     
 }
