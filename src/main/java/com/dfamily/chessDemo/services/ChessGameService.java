@@ -5,7 +5,7 @@
  */
 package com.dfamily.chessDemo.services;
 
-import com.dfamily.chessDemo.models.Game;
+import com.dfamily.chessDemo.models.dtos.GameDto;
 import java.util.List;
 
 /**
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface ChessGameService {
     
-    Game newChessGame();
-    List<Game> listChessGames();
+    GameDto newChessGame();
+    List<GameDto> listChessGames();
     
 }

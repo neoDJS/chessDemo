@@ -6,7 +6,11 @@
 package com.dfamily.chessDemo.services;
 
 import com.dfamily.chessDemo.models.Game;
+import com.dfamily.chessDemo.models.dtos.GameDto;
+import com.dfamily.chessDemo.models.mappers.ChessGameMapper;
+import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,15 +19,23 @@ import org.springframework.stereotype.Service;
  */
 @Service("ChessSvc")
 public class ChessGameServiceImpl implements ChessGameService {
+    
+    @Autowired
+    ChessGameMapper cgMapper;
 
     @Override
-    public Game newChessGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public GameDto newChessGame() {
+        return this.cgMapper.ToDto(new Game());
     }
 
     @Override
-    public List<Game> listChessGames() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<GameDto> listChessGames() {
+        List<Game> lg = new ArrayList<>();
+        
+        for(int i=0; i<10;i++){
+            lg.add(new Game());
+        }
+        return this.cgMapper.ToDto(lg);
     }
     
     
