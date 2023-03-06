@@ -5,32 +5,34 @@
  */
 package com.dfamily.chessDemo.models.pieces;
 
-import com.dfamily.chessDemo.models.BoardCase;
 import com.dfamily.chessDemo.models.Piece;
-import java.util.List;
+import com.dfamily.chessDemo.models.Player;
+import com.dfamily.chessDemo.models.moves.MoveDiagonalDownImpl;
+import com.dfamily.chessDemo.models.moves.MoveDiagonalUpImpl;
+import java.util.ArrayList;
 
 /**
  *
  * @author johns
  */
-public class Bishop extends Piece {
+public final class Bishop extends Piece {
 
     public Bishop() {
     }
 
-    public Bishop(String initPosition) {
-        this.setPieceNameLetter("B");
-        this.setInitPosition(initPosition);
+    public Bishop(Player owner, String initPosition) {
+        super.setPieceNameLetter("B");
+        super.setInitPosition(initPosition);
+        super.setMaxMove(8);
+        super.setOwner(owner);
+        super.setMovingWay(new ArrayList<>());
+        buildMoves();
     }
 
     @Override
-    protected void moveTo(String caseName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<BoardCase> validMove() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    protected void buildMoves() {
+        this.getMovingWay().add(new MoveDiagonalUpImpl());
+        this.getMovingWay().add(new MoveDiagonalDownImpl());
     }
     
 }

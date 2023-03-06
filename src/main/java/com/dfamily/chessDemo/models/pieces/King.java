@@ -5,32 +5,42 @@
  */
 package com.dfamily.chessDemo.models.pieces;
 
-import com.dfamily.chessDemo.models.BoardCase;
 import com.dfamily.chessDemo.models.Piece;
-import java.util.List;
+import com.dfamily.chessDemo.models.Player;
+import com.dfamily.chessDemo.models.moves.MoveASideImpl;
+import com.dfamily.chessDemo.models.moves.MoveBackwardImpl;
+import com.dfamily.chessDemo.models.moves.MoveDiagonalDownImpl;
+import com.dfamily.chessDemo.models.moves.MoveDiagonalUpImpl;
+import com.dfamily.chessDemo.models.moves.MoveForwardImpl;
+import com.dfamily.chessDemo.models.moves.SpecialMoveImpl;
+import java.util.ArrayList;
 
 /**
  *
  * @author johns
  */
-public class King extends Piece {
+public final class King extends Piece {
 
     public King() {
     }
 
-    public King(String initPosition) {
-        this.setPieceNameLetter("K");
-        this.setInitPosition(initPosition);
+    public King(Player owner, String initPosition) {
+        super.setPieceNameLetter("K");
+        super.setInitPosition(initPosition);
+        super.setMaxMove(1);
+        super.setOwner(owner);
+        super.setMovingWay(new ArrayList<>());
+        buildMoves();
     }
 
     @Override
-    protected void moveTo(String caseName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<BoardCase> validMove() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    protected void buildMoves() {
+        this.getMovingWay().add(new MoveDiagonalUpImpl());
+        this.getMovingWay().add(new MoveDiagonalDownImpl());
+        this.getMovingWay().add(new MoveASideImpl());
+        this.getMovingWay().add(new MoveForwardImpl());
+        this.getMovingWay().add(new MoveBackwardImpl());
+        this.getMovingWay().add(new SpecialMoveImpl());
     }
     
 }

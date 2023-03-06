@@ -7,21 +7,27 @@ package com.dfamily.chessDemo.models;
 
 import com.dfamily.chessDemo.models.BoardCase;
 import com.dfamily.chessDemo.models.Player;
+import com.dfamily.chessDemo.models.moves.Move;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 /**
  *
  * @author johns
- * @param <P>
  */
 
-public abstract class Piece<P> {
-//    private Player owner = null;
+public abstract class Piece {
+    private Player owner = null;
     private int pieceID;
     private String pieceNameLetter;
     private String initPosition = null;
     private BoardCase position = null;
+    private int maxMove;
+    private List<Move> movingWay = null;
+    
+    protected abstract void buildMoves(); 
+    
     protected void moveTo(String caseName){
         List<BoardCase> moves = validMove();
         BoardCase newCase = moves.stream()
@@ -37,10 +43,33 @@ public abstract class Piece<P> {
         }
     }
     
-    public abstract List<BoardCase> validMove();
+    public List<BoardCase> validMove() {
+        List<BoardCase> moveCases = new ArrayList<>();
+        int i=1;
+        movingWay.stream()
+                .forEach(m -> {
+                    List<BoardCase> mCases = new ArrayList<>();
+                    while((i <= maxMove) || (i>1 && !mCases.isEmpty())){
+                        mCases.addAll( m.nextMove(this.getPosition(), 
+                                moveCases.stream().filter(c -> c.getP() == null).collect(Collectors.toList())));
+                    }
+                    moveCases.addAll(mCases);
+                    
+                });
+        
+        return moveCases;
+    }
     
     public String getOnBoardName(){
         return this.getPosition()!= null? this.pieceNameLetter +"-"+ this.getPosition().getNameID() : this.pieceNameLetter;
+    }
+
+    public Player getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Player owner) {
+        this.owner = owner;
     }
 
     public int getPieceID() {
@@ -75,5 +104,21 @@ public abstract class Piece<P> {
         if(position != null && position.getP() == null)
             position.setP(this);
         this.position = position;
+    }
+
+    public int getMaxMove() {
+        return maxMove;
+    }
+
+    public void setMaxMove(int maxMove) {
+        this.maxMove = maxMove;
+    }
+
+    public List<Move> getMovingWay() {
+        return movingWay;
+    }
+
+    public void setMovingWay(List<Move> movingWay) {
+        this.movingWay = movingWay;
     }
 }

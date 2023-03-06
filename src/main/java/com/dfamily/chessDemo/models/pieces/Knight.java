@@ -5,32 +5,32 @@
  */
 package com.dfamily.chessDemo.models.pieces;
 
-import com.dfamily.chessDemo.models.BoardCase;
 import com.dfamily.chessDemo.models.Piece;
-import java.util.List;
+import com.dfamily.chessDemo.models.Player;
+import com.dfamily.chessDemo.models.moves.MoveSpecialLImpl;
+import java.util.ArrayList;
 
 /**
  *
  * @author johns
  */
-public class Knight extends Piece {
+public final class Knight extends Piece {
 
     public Knight() {
     }
 
-    public Knight(String initPosition) {
-        this.setPieceNameLetter("C");
-        this.setInitPosition(initPosition);
+    public Knight(Player owner, String initPosition) {
+        super.setPieceNameLetter("C");
+        super.setInitPosition(initPosition);
+        super.setMaxMove(8);
+        super.setOwner(owner);
+        super.setMovingWay(new ArrayList<>());
+        buildMoves();
     }
 
     @Override
-    protected void moveTo(String caseName) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<BoardCase> validMove() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    protected void buildMoves() {
+        this.getMovingWay().add(new MoveSpecialLImpl());
     }
     
 }

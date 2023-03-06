@@ -34,17 +34,17 @@ public class BlackPlayer extends Player {
     protected void buildPieces() {
         String[] h = {"a", "b", "c", "d", "e", "f", "g", "h"};
         List<Piece> pcs = this.getPieces();
-        pcs.add(new King(h[4]+8));
-        pcs.add(new Queen(h[3]+8));
-        pcs.add(new Rook(h[0]+8));
-        pcs.add(new Rook(h[7]+8));
-        pcs.add(new Knight(h[1]+8));
-        pcs.add(new Knight(h[6]+8));
-        pcs.add(new Bishop(h[2]+8));
-        pcs.add(new Bishop(h[5]+8));
+        pcs.add(new King(this, h[4]+8));
+        pcs.add(new Queen(this, h[3]+8));
+        pcs.add(new Rook(this, h[0]+8));
+        pcs.add(new Rook(this, h[7]+8));
+        pcs.add(new Knight(this, h[1]+8));
+        pcs.add(new Knight(this, h[6]+8));
+        pcs.add(new Bishop(this, h[2]+8));
+        pcs.add(new Bishop(this, h[5]+8));
         for(int i=0; i<4; i++){
-            pcs.add(new Pawn(h[i]+7));
-            pcs.add(new Pawn(h[7-i]+7));
+            pcs.add(new Pawn(this, h[i]+7));
+            pcs.add(new Pawn(this, h[7-i]+7));
         }
     }
 
