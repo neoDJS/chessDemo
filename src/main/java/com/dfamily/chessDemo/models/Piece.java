@@ -8,6 +8,7 @@ package com.dfamily.chessDemo.models;
 import com.dfamily.chessDemo.models.BoardCase;
 import com.dfamily.chessDemo.models.Player;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -21,7 +22,21 @@ public abstract class Piece<P> {
     private String pieceNameLetter;
     private String initPosition = null;
     private BoardCase position = null;
-    protected abstract void moveTo(String caseName);
+    protected void moveTo(String caseName){
+        List<BoardCase> moves = validMove();
+        BoardCase newCase = moves.stream()
+                    .filter(c -> c.getNameID().equals(caseName))
+                    .findFirst().get();
+        if(moves.stream().map(c -> c.getNameID()).collect(Collectors.toList()).contains(caseName)){
+            this.position.setP(null);
+            if(newCase.getP() != null)
+                newCase.getP().setPosition(null);
+            this.setPosition(moves.stream()
+                    .filter(c -> c.getNameID().equals(caseName))
+                    .findFirst().get());
+        }
+    }
+    
     public abstract List<BoardCase> validMove();
     
     public String getOnBoardName(){
@@ -57,6 +72,8 @@ public abstract class Piece<P> {
     }
 
     public void setPosition(BoardCase position) {
+        if(position != null && position.getP() == null)
+            position.setP(this);
         this.position = position;
     }
 }
