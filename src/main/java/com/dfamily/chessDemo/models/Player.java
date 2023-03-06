@@ -43,6 +43,16 @@ public abstract class Player {
         return toCase;
     }
     
+    public String plays(String fromCase, String toCase){
+        pieces.stream()
+                .filter(p -> p.getOnBoardName().equals(fromCase))
+                .findFirst()
+                .get()
+                .moveTo(toCase);
+        
+        return toCase;
+    }
+    
     private String readPlayerAction(int action){
         Scanner r = new Scanner(System.in);
         String scan = "";
