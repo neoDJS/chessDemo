@@ -52,28 +52,6 @@ public class Game {
         }
     }
     
-    public int ManuelRun(){
-        int turn;
-        String bc;
-        while(!mate){
-            turn = whoIsTurn();
-            if(turn == 1) {
-                bc = player1.plays();
-                mate = player2.isCheckMate(bc);
-            } else {
-                bc = player2.plays();
-                mate = player1.isCheckMate(bc);
-            }
-            
-            this.turnCount++;
-        }
-        
-        if(mate) {
-            System.out.print("Player${turn} win!");
-        }
-        return 1;
-    }
-    
     private int whoIsTurn(){
         return turnCount%2 + 1;
     }
