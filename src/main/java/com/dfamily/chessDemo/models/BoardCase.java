@@ -47,6 +47,8 @@ public class BoardCase {
     }
 
     public void setP(Piece p) {
+        if(p.getPosition() == null)
+            p.setPosition(this);
         this.p = p;
     }
 }

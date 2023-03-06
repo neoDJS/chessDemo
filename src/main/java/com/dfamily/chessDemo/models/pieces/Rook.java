@@ -7,6 +7,7 @@ package com.dfamily.chessDemo.models.pieces;
 
 import com.dfamily.chessDemo.models.BoardCase;
 import com.dfamily.chessDemo.models.Piece;
+import java.util.List;
 
 /**
  *
@@ -14,13 +15,21 @@ import com.dfamily.chessDemo.models.Piece;
  */
 public class Rook extends Piece {
 
+    public Rook() {
+    }
+
+    public Rook(String initPosition) {
+        this.setPieceNameLetter("R");
+        this.setInitPosition(initPosition);
+    }
+
     @Override
     protected void moveTo(String caseName) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    protected BoardCase[] validMove() {
+    public List<BoardCase> validMove() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
