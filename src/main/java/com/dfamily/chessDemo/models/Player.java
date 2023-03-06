@@ -5,8 +5,10 @@
  */
 package com.dfamily.chessDemo.models;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -19,7 +21,45 @@ public abstract class Player {
     private List<Piece> pieces = null;
     
     public String plays(){
-        return "";
+        final String fromCase, toCase;
+        
+        System.out.println("Saisi la piece a deplacer, dans la liste suivante");
+        String casesString = pieces.stream()
+                .filter(p -> p.getOnBoardName().length() >= 3)
+                .map(p -> p.getOnBoardName())
+                .reduce("", (sub, el) ->  sub+", "+el);
+        System.out.println(casesString);
+        fromCase = readPlayerAction(1);
+        
+        Piece p1 = pieces.stream()
+                .filter(p -> p.getOnBoardName().equals(fromCase))
+                .findFirst()
+                .get();
+        
+        System.out.println("Saisi la case ou il faut la placer");
+        toCase = readPlayerAction(2);
+        p1.moveTo(toCase);
+        
+        return toCase;
+    }
+    
+    private String readPlayerAction(int action){
+        Scanner r = new Scanner(System.in);
+        String scan = "";
+        boolean isValid = false;
+        while(r.hasNextLine() && isValid) {
+            scan = r.nextLine();
+            if(action == 1 && scan.length()>0 && isValidCaseName(scan.substring(scan.length()-1))) {
+                isValid = true; 
+                break;
+            }
+            if(action == 2 && scan.length()>0 && isValidCaseName(scan)) {
+                isValid = true; 
+                break;
+            }
+        }
+        if(r!=null) r.close();
+        return scan;
     }
     
     public boolean isCheckMate(String pc){
@@ -36,7 +76,7 @@ public abstract class Player {
                 k.validMove().isEmpty();
     }
     
-    private boolean validateCasename(String caseName){
+    private boolean isValidCaseName(String caseName){
         return (caseName.length() == 2) && 
                 ("abcdefgh".contains(""+caseName.toLowerCase().charAt(0))) && 
                 ("12345678".contains(""+caseName.charAt(1)));
