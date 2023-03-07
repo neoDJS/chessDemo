@@ -14,7 +14,7 @@ import java.util.List;
  * @author johns
  */
 
-public abstract class PieceDto implements Serializable {
+public class PieceDto implements Serializable {
     private PlayerDto owner = null;
     private int pieceID;
     private String pieceNameLetter;

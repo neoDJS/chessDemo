@@ -21,11 +21,11 @@ import org.springframework.stereotype.Service;
 public class ChessGameServiceImpl implements ChessGameService {
     
     @Autowired
-    ChessGameMapper cgMapper;
+    ChessGameMapper chessGameMapper;
 
     @Override
     public GameDto newChessGame() {
-        return this.cgMapper.ToDto(new Game());
+        return this.chessGameMapper.ToDto(new Game());
     }
 
     @Override
@@ -35,7 +35,7 @@ public class ChessGameServiceImpl implements ChessGameService {
         for(int i=0; i<10;i++){
             lg.add(new Game());
         }
-        return this.cgMapper.ToDto(lg);
+        return this.chessGameMapper.ToDto(lg);
     }
     
     

@@ -5,7 +5,6 @@
  */
 package com.dfamily.chessDemo.models.pieces;
 
-import com.dfamily.chessDemo.models.Piece;
 import com.dfamily.chessDemo.models.Player;
 import com.dfamily.chessDemo.models.moves.MoveDiagonalA8H1FullImpl;
 import com.dfamily.chessDemo.models.moves.MoveDiagonalA1H8FullImpl;
@@ -15,7 +14,7 @@ import java.util.ArrayList;
  *
  * @author johns
  */
-public final class Bishop extends Piece {
+public final class Bishop extends PieceImpl {
 
     public Bishop() {
     }

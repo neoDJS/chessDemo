@@ -5,7 +5,6 @@
  */
 package com.dfamily.chessDemo.models.pieces;
 
-import com.dfamily.chessDemo.models.Piece;
 import com.dfamily.chessDemo.models.Player;
 import com.dfamily.chessDemo.models.moves.MoveSpecialLImpl;
 import java.util.ArrayList;
@@ -14,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author johns
  */
-public final class Knight extends Piece {
+public final class Knight extends PieceImpl {
 
     public Knight() {
     }

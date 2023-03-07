@@ -7,6 +7,8 @@ package com.dfamily.chessDemo.models.mappers;
 
 import com.dfamily.chessDemo.models.BoardCase;
 import com.dfamily.chessDemo.models.dtos.BoardCaseDto;
+import com.dfamily.chessDemo.models.mappers.Factory.PieceMapperFactory;
+import com.dfamily.chessDemo.models.mappers.Factory.PlayerMapperFactory;
 import java.util.List;
 import org.mapstruct.Mapper;
 
@@ -14,7 +16,7 @@ import org.mapstruct.Mapper;
  *
  * @author johns
  */
-@Mapper(componentModel = "caseMp")
+@Mapper(componentModel = "caseMp", uses={PieceMapperFactory.class, PlayerMapperFactory.class})
 public interface BoardCaseMapper {
     BoardCaseDto ToDto(BoardCase source);
     BoardCase ToEntity(BoardCaseDto destination);

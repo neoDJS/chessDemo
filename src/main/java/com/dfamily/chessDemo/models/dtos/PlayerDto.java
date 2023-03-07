@@ -5,7 +5,6 @@
  */
 package com.dfamily.chessDemo.models.dtos;
 
-import com.dfamily.chessDemo.models.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -13,12 +12,12 @@ import java.util.List;
  *
  * @author johns
  */
-public abstract class PlayerDto implements Serializable {
+public class PlayerDto implements Serializable {
     private int playerID;
     private String name = null;
     private String color = null;
-    private Game game = null;
-    private List<Piece> pieces = null;
+    private GameDto game = null;
+    private List<PieceDto> pieces = null;
 
     public int getPlayerID() {
         return playerID;
@@ -44,19 +43,19 @@ public abstract class PlayerDto implements Serializable {
         this.color = color;
     }
 
-    public Game getGame() {
+    public GameDto getGame() {
         return game;
     }
 
-    public void setGame(Game game) {
+    public void setGame(GameDto game) {
         this.game = game;
     }
 
-    public List<Piece> getPieces() {
+    public List<PieceDto> getPieces() {
         return pieces;
     }
 
-    public void setPieces(List<Piece> pieces) {
+    public void setPieces(List<PieceDto> pieces) {
         this.pieces = pieces;
     }
 }
