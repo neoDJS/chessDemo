@@ -20,22 +20,22 @@ import org.springframework.stereotype.Service;
 @Service("ChessSvc")
 public class ChessGameServiceImpl implements ChessGameService {
     
-    @Autowired
-    ChessGameMapper chessGameMapper;
+//    @Autowired
+//    ChessGameMapper chessGameMapper;
 
     @Override
-    public GameDto newChessGame() {
-        return this.chessGameMapper.ToDto(new Game());
+    public Game newChessGame() {
+        return new Game();
     }
 
     @Override
-    public List<GameDto> listChessGames() {
+    public List<Game> listChessGames() {
         List<Game> lg = new ArrayList<>();
         
         for(int i=0; i<10;i++){
             lg.add(new Game());
         }
-        return this.chessGameMapper.ToDto(lg);
+        return lg;
     }
     
     

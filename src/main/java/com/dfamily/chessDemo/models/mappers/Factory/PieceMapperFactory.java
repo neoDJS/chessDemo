@@ -6,7 +6,14 @@
 package com.dfamily.chessDemo.models.mappers.Factory;
 
 import com.dfamily.chessDemo.models.Piece;
-import com.dfamily.chessDemo.models.pieces.PieceImpl;
+import com.dfamily.chessDemo.models.dtos.PieceDto;
+import com.dfamily.chessDemo.models.pieces.Bishop;
+import com.dfamily.chessDemo.models.pieces.King;
+import com.dfamily.chessDemo.models.pieces.Knight;
+import com.dfamily.chessDemo.models.pieces.Pawn;
+import com.dfamily.chessDemo.models.pieces.Queen;
+import com.dfamily.chessDemo.models.pieces.Rook;
+import org.mapstruct.ObjectFactory;
 
 /**
  *
@@ -14,8 +21,35 @@ import com.dfamily.chessDemo.models.pieces.PieceImpl;
  */
 public class PieceMapperFactory {
     
-    public Piece createPiece() {
-        return new PieceImpl();
+    
+    
+    @ObjectFactory
+    public Piece createPiece(PieceDto dto) {
+        Piece p;
+        switch(dto.getPieceNameLetter()){
+            case "K": p = new King();
+                      break;
+            case "Q": p = new Queen();
+                      break;
+            case "B": p = new Bishop();
+                      break;
+            case "C": p = new Knight();
+                      break;
+            case "R": p = new Rook();
+                      break;
+            case "P": p = new Pawn();
+                      break;
+            default: p = new Pawn();
+        }
+        
+        p.setInitPosition(dto.getInitPosition());
+        p.setMaxMove(dto.getMaxMove());
+        p.setMovingWay(dto.getMovingWay());
+//        p.setOwner(dto.getOwner()));
+        p.setPieceID(dto.getPieceID());
+        p.setPieceNameLetter(dto.getPieceNameLetter());
+//        p.setPosition(dto.getPosition());
+        return p;
     }
     
 }

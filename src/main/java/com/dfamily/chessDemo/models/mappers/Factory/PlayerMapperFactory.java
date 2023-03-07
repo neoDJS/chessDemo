@@ -6,7 +6,10 @@
 package com.dfamily.chessDemo.models.mappers.Factory;
 
 import com.dfamily.chessDemo.models.Player;
-import com.dfamily.chessDemo.models.players.PlayerImpl;
+import com.dfamily.chessDemo.models.dtos.PlayerDto;
+import com.dfamily.chessDemo.models.players.BlackPlayer;
+import com.dfamily.chessDemo.models.players.WhitePlayer;
+import org.mapstruct.ObjectFactory;
 
 /**
  *
@@ -14,8 +17,23 @@ import com.dfamily.chessDemo.models.players.PlayerImpl;
  */
 public class PlayerMapperFactory {
     
-    public Player createPlayer() {
-        return new PlayerImpl();
+    @ObjectFactory
+    public Player createPlayer(PlayerDto dto) {
+        Player p;
+        switch(dto.getColor()){
+            case "White": p = new WhitePlayer();
+                          break;
+            case "Black": p = new BlackPlayer();
+                          break;
+            default: p = new WhitePlayer();
+        }
+        
+        p.setColor(dto.getColor());
+//        p.setGame(dto.getGame());
+        p.setName(dto.getName());
+//        p.setPieces(dto.getPieces());
+        p.setPlayerID(dto.getPlayerID());
+        return p;
     }
     
 }

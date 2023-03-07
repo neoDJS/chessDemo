@@ -5,6 +5,7 @@
  */
 package com.dfamily.chessDemo.models.pieces;
 
+import com.dfamily.chessDemo.models.Piece;
 import com.dfamily.chessDemo.models.Player;
 import com.dfamily.chessDemo.models.moves.MoveASideImpl;
 import com.dfamily.chessDemo.models.moves.MoveBackwardImpl;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
  *
  * @author johns
  */
-public final class King extends PieceImpl {
+public final class King extends Piece {
 
     public King() {
     }

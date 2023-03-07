@@ -5,6 +5,7 @@
  */
 package com.dfamily.chessDemo.controller;
 
+import com.dfamily.chessDemo.models.Game;
 import com.dfamily.chessDemo.models.dtos.GameDto;
 import com.dfamily.chessDemo.services.ChessGameService;
 import java.util.List;
@@ -25,12 +26,12 @@ public class ChessGameController {
     ChessGameService chessSvc;
     
     @GetMapping(path="/games/new", produces = "application/json")
-    public GameDto getnewChessGame(){
+    public Game getnewChessGame(){
         return chessSvc.newChessGame();
     }
     
     @GetMapping(path="/games", produces = "application/json")
-    public List<GameDto> getListChessGames(){
+    public List<Game> getListChessGames(){
         return chessSvc.listChessGames();
     }
     

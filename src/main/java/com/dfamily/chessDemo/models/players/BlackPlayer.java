@@ -7,6 +7,7 @@ package com.dfamily.chessDemo.models.players;
 
 import com.dfamily.chessDemo.models.Game;
 import com.dfamily.chessDemo.models.Piece;
+import com.dfamily.chessDemo.models.Player;
 import com.dfamily.chessDemo.models.pieces.Bishop;
 import com.dfamily.chessDemo.models.pieces.King;
 import com.dfamily.chessDemo.models.pieces.Knight;
@@ -20,7 +21,7 @@ import java.util.List;
  *
  * @author johns
  */
-public final class BlackPlayer extends PlayerImpl {
+public final class BlackPlayer extends Player {
 
     public BlackPlayer() {
     }
