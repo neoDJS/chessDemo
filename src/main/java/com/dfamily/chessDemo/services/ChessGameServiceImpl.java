@@ -25,7 +25,7 @@ public class ChessGameServiceImpl implements ChessGameService {
 
     @Override
     public Game newChessGame() {
-        return new Game();
+        return new Game("");
     }
 
     @Override
@@ -33,7 +33,7 @@ public class ChessGameServiceImpl implements ChessGameService {
         List<Game> lg = new ArrayList<>();
         
         for(int i=0; i<10;i++){
-            lg.add(new Game());
+            lg.add(new Game(""));
         }
         return lg;
     }

@@ -23,14 +23,14 @@ public abstract class Player {
         final String fromCase, toCase;
         
         System.out.println("Saisi la piece a deplacer, dans la liste suivante");
-        String casesString = pieces.stream()
+        String casesString = this.getPieces().stream()
                 .filter(p -> p.getOnBoardName().length() >= 3)
                 .map(p -> p.getOnBoardName())
                 .reduce("", (sub, el) ->  sub+", "+el);
         System.out.println(casesString);
         fromCase = readPlayerAction(1);
         
-        Piece p1 = pieces.stream()
+        Piece p1 = this.getPieces().stream()
                 .filter(p -> p.getOnBoardName().equals(fromCase))
                 .findFirst()
                 .get();
@@ -43,7 +43,7 @@ public abstract class Player {
     }
     
     public String plays(String fromCase, String toCase){
-        pieces.stream()
+        this.getPieces().stream()
                 .filter(p -> p.getOnBoardName().equals(fromCase))
                 .findFirst()
                 .get()
@@ -72,7 +72,7 @@ public abstract class Player {
     }
     
     public boolean isCheckMate(String pc){
-        Piece k = this.pieces.stream()
+        Piece k = this.getPieces().stream()
                 .filter(p -> "King".equals(p.getClass().getName()))
                 .findFirst()
                 .get();
@@ -92,10 +92,10 @@ public abstract class Player {
     }
     
     protected abstract void buildPieces(); 
-    public abstract void initPiecesBoardPosition();
+    public abstract void initPiecesBoardPosition(ChessBoard b);
     
     protected boolean validPiecesCount(){
-        return pieces != null && pieces.size() == 16;
+        return this.getPieces() != null && this.getPieces().size() == 16;
     }
 
     public int getPlayerID() {

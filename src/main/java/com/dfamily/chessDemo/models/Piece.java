@@ -32,7 +32,7 @@ public abstract class Piece {
                     .filter(c -> c.getNameID().equals(caseName))
                     .findFirst().get();
         if(moves.stream().map(c -> c.getNameID()).collect(Collectors.toList()).contains(caseName)){
-            this.position.setP(null);
+            this.getPosition().setP(null);
             if(newCase.getP() != null)
                 newCase.getP().setPosition(null);
             this.setPosition(moves.stream()
@@ -41,13 +41,18 @@ public abstract class Piece {
         }
     }
     
+    public int getInitBoardCase(){
+        int t = this.getInitPosition().chars().reduce((a, b) -> (b-49)*8+(a-97)).orElse(0);
+        System.out.println("CaseID: "+this.getInitPosition()+", caseNum: "+t);
+      return t;
+    }
+    
     public List<BoardCase> validMove() {
         List<BoardCase> moveCases = new ArrayList<>();
         int i=1;
-        movingWay.stream()
-                .forEach(m -> {
+        this.getMovingWay().forEach(m -> {
                     List<BoardCase> mCases = new ArrayList<>();
-                    while((i <= maxMove) || (i>1 && !mCases.isEmpty())){
+                    while((i <= this.getMaxMove()) || (i>1 && !mCases.isEmpty())){
                         mCases.addAll( m.nextMove(this.getPosition(), 
                                 moveCases.stream().filter(c -> c.getP() == null).collect(Collectors.toList())));
                     }
@@ -59,7 +64,7 @@ public abstract class Piece {
     }
     
     public String getOnBoardName(){
-        return this.getPosition()!= null? this.pieceNameLetter +"-"+ this.getPosition().getNameID() : this.pieceNameLetter;
+        return this.getPosition()!= null? this.getPieceNameLetter() +"-"+ this.getPosition().getNameID() : this.getPieceNameLetter();
     }
 
     public Player getOwner() {
@@ -99,9 +104,9 @@ public abstract class Piece {
     }
 
     public void setPosition(BoardCase position) {
+        this.position = position;
         if(position != null && position.getP() == null)
             position.setP(this);
-        this.position = position;
     }
 
     public int getMaxMove() {

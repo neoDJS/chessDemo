@@ -23,11 +23,12 @@ public class ChessBoard {
     public ChessBoard(Game newG) {
         this.cases = new ArrayList<>();
         String[] h = {"a", "b", "c", "d", "e", "f", "g", "h"};
-        for(String el:h){
-            for(int i=1; i<=8; i++){
+        for(int i=1; i<=8; i++){
+            for(String el:h){
                 cases.add(new BoardCase(this, el+i));
             }
         }
+        System.out.println("Chess Board initialized!");
     }
 
     public int getBoardID() {

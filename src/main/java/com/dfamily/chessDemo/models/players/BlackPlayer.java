@@ -5,6 +5,7 @@
  */
 package com.dfamily.chessDemo.models.players;
 
+import com.dfamily.chessDemo.models.ChessBoard;
 import com.dfamily.chessDemo.models.Game;
 import com.dfamily.chessDemo.models.Piece;
 import com.dfamily.chessDemo.models.Player;
@@ -31,7 +32,8 @@ public final class BlackPlayer extends Player {
         super.setPlayerID(2);
         super.setColor("Black");
         buildPieces();
-        initPiecesBoardPosition();
+//        initPiecesBoardPosition();
+        System.out.println("Black Player initialized!");
     }
     
     @Override
@@ -53,13 +55,8 @@ public final class BlackPlayer extends Player {
     }
 
     @Override
-    public void initPiecesBoardPosition() {
-        this.getPieces().forEach((p) -> {
-            this.getGame().getBoard().getCases().stream()
-                    .filter(c -> c.getNameID().equalsIgnoreCase(p.getInitPosition()))
-                    .findFirst()
-                    .get().setP(p);
-        });
+    public void initPiecesBoardPosition(ChessBoard b) {
+        this.getPieces().forEach((p) -> b.getCases().get(p.getInitBoardCase()).setP(p));
     }
     
 }
