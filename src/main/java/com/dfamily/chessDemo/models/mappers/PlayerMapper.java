@@ -15,7 +15,7 @@ import org.mapstruct.Mapper;
  *
  * @author johns
  */
-@Mapper(componentModel = "playerMp", uses={PieceMapperFactory.class, PlayerMapperFactory.class})
+@Mapper(componentModel = "spring", uses={PieceMapperFactory.class, PlayerMapperFactory.class})
 public interface PlayerMapper {
     PlayerDto ToDto(Player source);
     Player ToEntity(PlayerDto destination);

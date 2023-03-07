@@ -16,7 +16,7 @@ import org.mapstruct.Mapper;
  *
  * @author johns
  */
-@Mapper(componentModel = "caseMp", uses={PieceMapperFactory.class, PlayerMapperFactory.class})
+@Mapper(componentModel = "spring", uses={PieceMapperFactory.class, PlayerMapperFactory.class})
 public interface BoardCaseMapper {
     BoardCaseDto ToDto(BoardCase source);
     BoardCase ToEntity(BoardCaseDto destination);
